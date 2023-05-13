@@ -1,0 +1,31 @@
+<div id="index-shop" v-cloak>
+    <div class="container pt-5 pb-5">
+        <div>
+            <div class="btn-toolbar pull-right">
+                <div class="btn-group">
+                    <a class="btn btn-dark" href="shops/new">Add</a>
+                </div>
+            </div>
+            <h2>Shops</h2>
+        </div>
+        <table class="table mt-4">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="shop in shops">
+                <th scope="row">{{ shop.id }}</th>
+                <td>{{ shop.name }}</td>
+                <td class="text-right">
+                    <a class="btn btn-outline-info" :href="'/shops/' + shop.id + '/products'">Products</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

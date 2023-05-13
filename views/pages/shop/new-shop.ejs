@@ -1,0 +1,39 @@
+<div id="new-shop" v-cloak>
+    <div class="container pt-5 pb-5">
+        <h1>Create a new shop</h1>
+        <hr/>
+        <ajax-form action="storeShop" :syncing.sync="syncing" :cloud-error.sync="cloudError" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" @submitted="submittedForm()">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" id="name" name="name" type="text" :class="[formErrors.name ? 'is-invalid' : '']" v-model.trim="formData.name" placeholder="" focus-first>
+                        <div class="invalid-feedback" v-if="formErrors.name">This field is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productNameDomSelector">Product Name DOM Selector</label>
+                        <input class="form-control" id="productNameDomSelector" name="productNameDomSelector" type="text" :class="[formErrors.productNameDomSelector ? 'is-invalid' : '']" v-model.trim="formData.productNameDomSelector" placeholder="">
+                        <div class="invalid-feedback" v-if="formErrors.productNameDomSelector">This field is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescriptionDomSelector">Product Description DOM Selector</label>
+                        <input class="form-control" id="productDescriptionDomSelector" name="productDescriptionDomSelector" type="text" :class="[formErrors.productDescriptionDomSelector ? 'is-invalid' : '']" v-model.trim="formData.productDescriptionDomSelector" placeholder="">
+                        <div class="invalid-feedback" v-if="formErrors.productDescriptionDomSelector">This field is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <cloud-error v-if="cloudError"></cloud-error>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group text-right">
+                        <a class="btn btn-outline-info" href="/shops">Cancel</a>
+                        <ajax-button type="submit" :syncing="syncing" class="btn btn-dark">Create</ajax-button>
+                    </div>
+                </div>
+            </div>
+        </ajax-form>
+    </div>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

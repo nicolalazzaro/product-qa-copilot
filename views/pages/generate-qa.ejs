@@ -1,0 +1,39 @@
+<div id="generate-qa" v-cloak>
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="productName">Name</label>
+                    <input ref="productName" type="hidden" :value="product.name">
+                    <input class="form-control" id="productName" name="productName" type="text" placeholder="" v-model.trim="formData.productName">
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <input ref="productDescription" type="hidden" :value="product.description">
+                    <textarea class="form-control" id="productDescription" name="productDescription" type="text" placeholder="" v-model.trim="formData.productDescription" rows="8"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+                <div class="form-group text-right">
+                    <a class="btn btn-outline-secondary" onclick="history.back()">Cancel</a>
+                    <button type="button" class="btn btn-primary" @click="generate" :disabled="generating" style="background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf); border-color: #dc3376 !important;">
+                        <i v-if="generating" class="fa fa-spinner mr-1 fa-spin" aria-hidden="true"></i>
+                        <i v-else class="fa fa-bolt mr-1" aria-hidden="true"></i>
+                        <span v-if="generating">Generating...</span>
+                        <span v-else>Generate</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="generated-qa">
+            <!-- <p class="bg-light p-4 rounded">...</p> -->
+        </div>
+    </div>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+
+<script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
